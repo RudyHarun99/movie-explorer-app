@@ -1,0 +1,14 @@
+@import '../variables/fonts';
+@import '../functions/rem-calc';
+@import '../mixins/typography';
+
+:root {
+  font-family: $font-primary;
+  @include typography('text-md', 'regular');
+}
+
+.container {
+  max-width: rem-calc(1280);
+  padding: 0 rem-calc(32);
+  margin: 0 auto;
+}
