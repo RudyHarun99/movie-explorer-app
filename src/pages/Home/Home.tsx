@@ -1,15 +1,20 @@
 import React from 'react';
-import styles from './Home.module.scss';
+import { useSelector } from 'react-redux';
+import { movieSelector } from '@/services/redux/movie.selectors';
 import { useGetMovies } from '@/hooks/useGetMovies';
 
 export const Home: React.FC = () => {
-  const { results, isFetching } = useGetMovies();
+  const { isFetching } = useGetMovies();
+  const { movies } = useSelector(movieSelector);
 
   return (
     <>
       <div>Home Page</div>
-      {isFetching && <li>Data is Fetching...</li>}
-      {JSON.stringify(results)}
+      {
+        isFetching ?
+        <li>Data is Fetching...</li> :
+        JSON.stringify(movies)
+      }
     </>
   )
 }

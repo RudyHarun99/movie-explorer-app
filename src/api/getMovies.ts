@@ -1,4 +1,3 @@
-import { AxiosRequestConfig } from "axios";
 import { QueryFunction } from "@tanstack/react-query";
 import { customAxios } from ".";
 import { z } from "zod";

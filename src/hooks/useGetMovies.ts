@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setMovies } from "@/services/redux/movie.slice";
 import { useQuery } from "@tanstack/react-query";
 import { getMovies, MoviesQueryKey } from "@/api/getMovies";
 import { Movie } from "@/models/movie";
@@ -14,6 +17,7 @@ type UseGetMoviesReturn = {
 };
 
 export const useGetMovies = (): UseGetMoviesReturn => {
+  const dispatch = useDispatch();
   const queryKey: MoviesQueryKey = [ 'popular' ];
 
   const { data, error, isFetching } = useQuery({
@@ -28,6 +32,10 @@ export const useGetMovies = (): UseGetMoviesReturn => {
       return failureCount <= 3;
     },
   });
+
+  useEffect(() => {
+    dispatch(setMovies(data?.results));
+  }, [data]);
 
   const page = data?.page ?? 0;
   const results = data?.results ?? [];
