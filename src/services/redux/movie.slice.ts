@@ -1,8 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+type MovieItem = {
+  adult: boolean;
+  backdrop_path: string;
+  genre_ids: number[];
+  id: number;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  release_date: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+};
+
+type MovieState = {
+  movies: MovieItem[];
+  favourites: MovieItem[];
+}
+
+const initialState: MovieState = {
   movies: [],
-  movieDetail: {},
   favourites: [],
 };
 
@@ -13,15 +34,12 @@ export const movieSlice = createSlice({
     setMovies: (state, action) => {
       state.movies = action.payload;
     },
-    setMovieDetail: (state, action) => {
-      state.movieDetail = action.payload;
-    },
     addFavourite: (state, action) => {
       state.favourites = [...state.favourites, action.payload];
     },
     removeFavourite: (state, action) => {
       state.favourites = state.favourites.filter(
-        (movie) => movie.imdbID !== action.payload
+        (movie) => movie.id !== action.payload
       );
     },
   },
@@ -29,7 +47,6 @@ export const movieSlice = createSlice({
 
 export const {
   setMovies,
-  setMovieDetail,
   addFavourite,
   removeFavourite
 } = movieSlice.actions;
