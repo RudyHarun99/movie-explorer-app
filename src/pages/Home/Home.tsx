@@ -1,11 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { movieSelector } from '@/services/redux/movie.selectors';
 import { useGetMovies } from '@/hooks/useGetMovies';
 
 export const Home: React.FC = () => {
-  const { isFetching } = useGetMovies();
-  const { movies } = useSelector(movieSelector);
+  const { results, isFetching } = useGetMovies();
 
   return (
     <>
@@ -13,8 +10,8 @@ export const Home: React.FC = () => {
       {
         isFetching ?
         <li>Data is Fetching...</li> :
-        JSON.stringify(movies)
+        JSON.stringify(results)
       }
     </>
-  )
-}
+  );
+};

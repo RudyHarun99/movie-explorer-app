@@ -1,7 +1,16 @@
 import React from 'react';
+import styles from './Footer.module.scss';
+import { Logo } from '../Logo';
 
 export const Footer: React.FC = () => {
   return (
-    <div>Footer Component</div>
-  )
-}
+    <footer className={styles.footerContainer}>
+      <div className={styles.footerContent}>
+        <Logo />
+        <div className={styles.footerCopyright}>
+          Copyright ©2025 Movie Explorer
+        </div>
+      </div>
+    </footer>
+  );
+};

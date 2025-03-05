@@ -33,14 +33,14 @@ export const useGetMovies = (): UseGetMoviesReturn => {
     },
   });
 
-  useEffect(() => {
-    dispatch(setMovies(data?.results));
-  }, [data]);
-
   const page = data?.page ?? 0;
   const results = data?.results ?? [];
   const total_pages = data?.total_pages ?? 0;
   const total_results = data?.total_results ?? 0;
+
+  useEffect(() => {
+    dispatch(setMovies(results));
+  }, [data]);
 
   return {
     page,

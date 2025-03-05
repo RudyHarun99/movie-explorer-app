@@ -1,0 +1,25 @@
+.footerContainer {
+  color: $white;
+  padding: rem-calc(45) get-spacing(spacing-11xl);
+  width: 100%;
+  height: rem-calc(120);
+  border-top: 1px solid get-color('neutral', 800);
+  gap: get-spacing(spacing-md);
+  
+  .footerContent {
+    display: flex;
+    flex-direction: column;
+
+    @include md {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .footerCopyright {
+      color: get-color('neutral', 600);
+      align-items: end;
+      @include typography('text-md', 'regular');
+    }
+  }
+}
